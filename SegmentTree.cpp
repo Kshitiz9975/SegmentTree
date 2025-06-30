@@ -11,6 +11,8 @@ struct Node {
     int bit_or = 0;
     int bit_xor = 0;
 
+    Node() = default;
+
     Node(int value) {
         sum = value;
         minVal = value;
@@ -34,8 +36,6 @@ struct Node {
         res.bit_xor = a.bit_xor ^ b.bit_xor;
         return res;
     }
-
-    Node() = default; // Optional for safety with default returns
 };
 
 class SegmentTree {
@@ -69,7 +69,7 @@ private:
 
     Node query(int v, int tl, int tr, int l, int r) {
         if (l > r)
-            return Node();  // Default zero node
+            return Node();
         if (l == tl && r == tr)
             return tree[v];
         int tm = (tl + tr) / 2;
@@ -80,7 +80,7 @@ private:
 
 public:
     SegmentTree(const vector<int> &arr) {
-        n = arr.size() - 1; 
+        n = arr.size() - 1;
         tree.resize(4 * (n + 1));
         build(arr, 1, 1, n);
     }
@@ -93,4 +93,3 @@ public:
         return query(1, 1, n, l, r);
     }
 };
-
