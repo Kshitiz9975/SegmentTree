@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    vector<int> arr = {0, 5, 1, 3, 7, 9}; // 1-based indexing
+    vector<int> arr = {0, 5, 1, 3, 7, 9}; 
     SegmentTree st(arr);
 
     Node res1 = st.query(2, 4);
